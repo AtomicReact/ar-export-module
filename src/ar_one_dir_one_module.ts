@@ -1,11 +1,11 @@
-import { parse, relative, resolve } from "node:path"
+import { relative, resolve } from "node:path"
 import { existsSync, readdirSync, mkdirSync, statSync, rmSync } from "node:fs"
 
 import { Atomic, IAtomicConfig, IFileDescription, log, normalizeModuleName } from "atomicreact-ts"
 
 interface IOneDirOneModule extends Omit<IAtomicConfig, "indexScriptFilePath"> {
     atomic: Atomic,
-    indexScriptFileName: string,
+    indexScriptFileName?: string,
     srcPath: string,
     outPath: string,
     ignoreAlreadyBundled?: boolean
@@ -29,6 +29,7 @@ export class OneDirOneModule {
         if (!existsSync(this.outDirPath)) mkdirSync(this.outDirPath, { recursive: true })
 
         this.config.ignoreAlreadyBundled ??= true
+        this.config.indexScriptFileName ??= "index.ts"
 
         this.config.atomic.afterBundle(async (fileDescription) => {
             await this.bundleDir(this.srcDirPath, fileDescription)
@@ -47,15 +48,15 @@ export class OneDirOneModule {
             const outScriptDir = resolve(this.outDirPath, relativePath)
 
             mkdirSync(outScriptDir, { recursive: true })
-            const outScriptFilePath = resolve(outScriptDir, `${normalizeModuleName(this.config.indexScriptFileName)}.js`)
-            const outStyleFilePath = resolve(outScriptDir, `${normalizeModuleName(this.config.indexScriptFileName)}.css`)
+            const outScriptFilePath = resolve(outScriptDir, `${normalizeModuleName(this.config.indexScriptFileName!)}.js`)
+            const outStyleFilePath = resolve(outScriptDir, `${normalizeModuleName(this.config.indexScriptFileName!)}.css`)
 
             if (this.config.atomic.config.verbose) log(`─── [${OneDirOneModule.name}]`, outScriptFilePath)
 
             const config: IAtomicConfig = {
                 ...this.config.atomic.config,
                 ...this.config,
-                indexScriptFilePath: resolve(path, this.config.indexScriptFileName),
+                indexScriptFilePath: resolve(path, this.config.indexScriptFileName!),
                 includeCore: false,
                 outScriptFilePath,
                 outStyleFilePath,
