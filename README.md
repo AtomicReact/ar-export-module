@@ -36,9 +36,6 @@ Input:
 ``` 
 ./src/frontend
 └── app
-│   └── pages
-│   │   └── error
-│   │   └── not_found
 │   └── app.tsx
 └── i18n
     └── locales
