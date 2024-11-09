@@ -1,6 +1,6 @@
 {
   "name": "ar-export-module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Export AtomicReact-TS modules with one file or dir",
   "main": "dist/index.js",
   "type": "module",
@@ -30,6 +30,6 @@
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "atomicreact-ts": "^0.4.4"
+    "atomicreact-ts": ">=0.4.4"
   }
 }
