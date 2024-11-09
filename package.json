@@ -1,7 +1,7 @@
 {
   "name": "ar-export-module",
   "version": "1.0.2",
-  "description": "Export AtomicReact-TS modules with one file or dir",
+  "description": "Export tool for export separated modules from main module for AtomicReact-TS.",
   "main": "dist/index.js",
   "type": "module",
   "files": [

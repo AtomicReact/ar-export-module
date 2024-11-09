@@ -1,5 +1,6 @@
 # AtomicReact-TS Export Modules &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AtomicReact/ar-export-module/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/ar-export-module.svg?style=flat)](https://www.npmjs.com/package/ar-export-module) ![NPM Downloads](https://img.shields.io/npm/dt/ar-export-module.svg)
 
+Export tool for export separated modules from main module for AtomicReact-TS.
 
 ## Installing
 
@@ -15,7 +16,7 @@ npm install ar-export-module
 yarn add ar-export-module
 ```
 
-Export tool for export modules for AtomicReact-TS
+
 
 ## One File One Module
 
